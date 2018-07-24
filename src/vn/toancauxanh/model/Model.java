@@ -133,7 +133,6 @@ public class Model<T extends Model<T>> extends BaseObject<T> {
 						}
 					});
 		}
-
 	}
 
 	@Command

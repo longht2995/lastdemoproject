@@ -43,7 +43,6 @@ public final class VaiTroService extends BasicService<VaiTro> {
 		return QVaiTro.vaiTro;
 
 	}
-
 	public void bootstrap() {
 		if (find(VaiTro.class).fetchCount() < VaiTro.VAITRO_DEFAULTS.length) {
 			for (String vai : VaiTro.VAITRO_DEFAULTS) {

@@ -23,8 +23,6 @@ import vn.toancauxanh.model.QModel;
 import vn.toancauxanh.service.BasicService;
 
 public class BaseValid extends AbstractValidator {
-	private static transient final Logger log = LogManager.getLogger(BaseValid.class.getName());
-
 	@Override
 	public void validate(final ValidationContext ctx) {
 		final ValidationMessages vmsgs = (ValidationMessages) ctx.getValidatorArg("vmsg");

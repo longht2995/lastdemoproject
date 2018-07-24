@@ -30,14 +30,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Object;
 
-import vn.toancauxanh.cms.service.BaiVietService;
 import vn.toancauxanh.cms.service.BannerService;
-import vn.toancauxanh.cms.service.CategoryService;
+import vn.toancauxanh.cms.service.CapBanHanhService;
+import vn.toancauxanh.cms.service.ChuDeVideoService;
+import vn.toancauxanh.cms.service.CoQuanBanHanhService;
 import vn.toancauxanh.cms.service.DonViHanhChinhService;
-import vn.toancauxanh.cms.service.DonViService;
 import vn.toancauxanh.cms.service.ImageService;
 import vn.toancauxanh.cms.service.LanguageService;
+import vn.toancauxanh.cms.service.LinhVucVanBanService;
+import vn.toancauxanh.cms.service.LoaiVanBanService;
 import vn.toancauxanh.cms.service.ThamSoService;
+import vn.toancauxanh.cms.service.VanBanService;
+import vn.toancauxanh.cms.service.VideoService;
 import vn.toancauxanh.model.VaiTro;
 
 @Configuration
@@ -337,16 +341,33 @@ public class Entry extends BaseObject<Object> {
 		return "forward:/WEB-INF/zul/home1.zul?resource=" + path + "&action=lietke&file=/WEB-INF/zul/" + path
 				+ "/list.zul";
 	}
-
+	
 	@RequestMapping(value = "/login")
 	public String dangNhapBackend() {
 		return "forward:/WEB-INF/zul/login.zul";
 	}
-	
-	public final DonViService getDonVis() {
-		return new DonViService();
+	public final ChuDeVideoService getChuDeVideos() {
+		
+		return new ChuDeVideoService();
 	}
-	
+	public final VideoService getVideos() {
+		return new VideoService();
+	}
+	public final LoaiVanBanService getLoaiVanBans() {
+		return new LoaiVanBanService();
+	}
+	public final CoQuanBanHanhService getCoQuanBanHanhs() {
+		return new CoQuanBanHanhService();
+	}
+	public final VanBanService getVanBans() {
+		return new VanBanService();
+	}
+	public final LinhVucVanBanService getLinhVucVanBans() {
+		return new LinhVucVanBanService();
+	}
+	public final CapBanHanhService getCapBanHanhs() {
+		return new CapBanHanhService();
+	}
 	public final Quyen getQuyen() {
 		return getNhanVien().getTatCaQuyen();
 	}
@@ -355,14 +376,6 @@ public class Entry extends BaseObject<Object> {
 	}
 	public final DonViHanhChinhService getDonViHanhChinhs() {
 		return new DonViHanhChinhService();
-	}
-	
-	public final CategoryService getCategories() {
-		return new CategoryService();
-	}
-	
-	public final BaiVietService getBaiViets() {
-		return new BaiVietService();
 	}
 	
 	public final ImageService getImages(){

@@ -18,7 +18,6 @@ public class Asset<T extends Asset<T>> extends Model<T> {
 	private boolean ckEditorPopup;
 
 	@Override
-	// @SuppressWarnings("deprecation")
 	public String getTrangThaiSoan() {
 		return trangThaiSoan;
 	}

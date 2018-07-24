@@ -278,7 +278,7 @@ public class BaseObject<T> extends CoreObject<T> {
 	
 	public Map<String, String> getTrangThaiXuatBanList() {
 		HashMap<String, String> result = new HashMap<>();
-		result.put(null, "      ");
+		result.put(null, "");
 		result.put("false", "Không");
 		result.put("true", "Có");
 		return result;
@@ -353,6 +353,7 @@ public class BaseObject<T> extends CoreObject<T> {
 	@Command
 	public void redirectPage(@BindingParam("zul") String zul, @BindingParam("vmArgs") Object vmArgs,
 			@BindingParam("vm") Object vm, @BindingParam("nhom") Object nhom) {
+		System.out.println("Vào đây");
 		Map<String, Object> args = new HashMap<>();
 		args.put("vmArgs", vmArgs);
 		args.put("vm", vm);

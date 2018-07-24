@@ -5,14 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,18 +23,7 @@ import org.zkoss.bind.validator.AbstractValidator;
 import org.zkoss.image.AImage;
 import org.zkoss.io.Files;
 import org.zkoss.util.media.Media;
-import org.zkoss.zk.au.AuService;
-import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.ComponentNotFoundException;
-import org.zkoss.zk.ui.Desktop;
-import org.zkoss.zk.ui.IdSpace;
-import org.zkoss.zk.ui.Page;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.EventListener;
-import org.zkoss.zk.ui.event.UploadEvent;
-import org.zkoss.zk.ui.ext.ScopeListener;
-import org.zkoss.zk.ui.metainfo.ComponentDefinition;
-import org.zkoss.zk.ui.util.Template;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zul.Window;
 
 import com.google.common.base.Strings;
@@ -155,24 +138,6 @@ public class Image extends Asset<Image> {
 		this.title = Strings.nullToEmpty(title1);
 	}
 
-	/*
-	 * // bi-directional many-to-one association to Category
-	 * 
-	 * @Transient public Category getCategory() { return categories.isEmpty() ?
-	 * null : categories.get(0); }
-	 * 
-	 * @ManyToMany(fetch = FetchType.EAGER)
-	 * 
-	 * @Fetch(value = FetchMode.SUBSELECT) public List<Category> getCategories()
-	 * { return this.categories; }
-	 * 
-	 * public void setCategories(List<Category> category1) { categories =
-	 * category1; }
-	 * 
-	 * public void setCategory( Category category1) { if (category1 == null) {
-	 * categories.clear(); } else if (!categories.contains(category1)) {
-	 * categories.clear(); categories.add(category1); } }
-	 */
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	@QueryInit("*.*.*.*")
@@ -185,32 +150,35 @@ public class Image extends Asset<Image> {
 	}
 
 	private boolean flagSetImage = true;
-
+	
 	@Transient
 	public org.zkoss.image.Image getImageContent() throws FileNotFoundException, IOException {
-		if (imageContent == null && !noId() && !core().TT_DA_XOA.equals(getTrangThai())) {
+		if (imageContent == null && !noId() && 	!core().TT_DA_XOA.equals(getTrangThai())) {
 			if (flagSetImage) {
+				System.out.println("zooooooo");
 				loadImageIsView();
 			}
 		}
 		return imageContent;
 	}
-
+	@Transient
+	public String folderImageUrl() {
+		return "/" + Labels.getLabel("filestore.folder")+"/";
+	}
 	private void loadImageIsView() throws FileNotFoundException, IOException {
 		String imgName = "";
 		String s1 = ctx().getEnvironment().getProperty("filestore.root");
-		String s2 = File.separator + ctx().getEnvironment().getProperty("filestore.folder") + File.separator;
-		String s4 = s1 + ctx().getEnvironment().getProperty("filestore.folder") + File.separator;
+		String s2 = "/"+ctx().getEnvironment().getProperty("filestore.folder") + "/";
+		String s4 = s1 + ctx().getEnvironment().getProperty("filestore.folder")+ File.separator;
 		String s3 = getImageUrl().replace(s2, s4);
 		String path = s3;
 		if (!"".equals(getImageUrl()) && new File(path).exists()) {
 			String pathCompare = path.substring(0, path.lastIndexOf(File.separator) + 1) + "m_"
 					+ path.substring(path.lastIndexOf(File.separator) + 1);
+			System.out.println(pathCompare);
 			if (!"".equals(getMedium())) {
 				if (getMedium().equals(pathCompare)) {
 					imgName = pathCompare.substring(path.lastIndexOf(File.separator) + 1);
-					LOG.info("load img medium:" + imgName);
-
 					try (FileInputStream fis = new FileInputStream(new File(pathCompare));) {
 						setImageContent(new AImage(imgName, fis));
 					}

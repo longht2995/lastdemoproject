@@ -7,17 +7,15 @@ import java.net.URL;
 
 import javax.persistence.Entity;
 import javax.persistence.Index;
-import javax.persistence.Lob;
 import javax.persistence.Table;
-
 import javax.persistence.Transient;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.Filedownload;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import com.google.common.base.Strings;
 

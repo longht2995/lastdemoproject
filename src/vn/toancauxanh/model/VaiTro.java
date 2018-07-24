@@ -139,18 +139,8 @@ public class VaiTro extends Model<VaiTro> {
 		return alias;
 	}
 
-	@Override
-	public void save() {
-		setTenVaiTro(getTenVaiTro().trim().replaceAll("\\s+", " "));
-		setQuyens(quyenEdits);
-		if (noId()) {
-			showNotification("Đã lưu thành công!", "", "success");
-		} else {
-			showNotification("Đã cập nhật thành công!", "", "success");
-		}
-		doSave();
-	}
 
+	//Chạy lên 
 	@Transient
 	public Set<String> getQuyenAllMacDinhs() {
 		Set<String> quyens1 = new HashSet<>();
@@ -426,7 +416,17 @@ public class VaiTro extends Model<VaiTro> {
 		wdn.detach();
 		BindUtils.postNotifyChange(null, null, listObject, "vaiTroQuery");
 	}
-	
+	@Override
+	public void save() {
+		setTenVaiTro(getTenVaiTro().trim().replaceAll("\\s+", " "));
+		setQuyens(quyenEdits);
+		if (noId()) {
+			showNotification("Đã lưu thành công!", "", "success");
+		} else {
+			showNotification("Đã cập nhật thành công!", "", "success");
+		}
+		doSave();
+	}
 	@Transient
 	public boolean isMacDinh() {
 		return Arrays.asList(VAITRO_DEFAULTS).contains(this.getAlias());

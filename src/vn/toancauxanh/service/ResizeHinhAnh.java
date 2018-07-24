@@ -21,9 +21,7 @@ public class ResizeHinhAnh {
 	public static final float DEFAULT_S_SIZE = (float)125/200;
 	
 	public static void saveMediumAndSmall2(Image image, String strFolderStore) throws IOException {
-		System.out.println("saveMediumAndSmall2");
 		String fileUrl = strFolderStore + image.getName();
-		System.out.println("fileUrl: " + fileUrl);
 		File file = new File(fileUrl);
 		if (file.exists()){
 			BufferedImage originalImage = ImageIO.read(file);

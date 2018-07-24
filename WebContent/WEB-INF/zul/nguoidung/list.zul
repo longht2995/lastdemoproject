@@ -41,20 +41,6 @@
 									</combobox>
 								</n:div>
 							</n:div>
-							<n:div class="col-md-2">
-		    					<n:div class="form-group" >
-		    						<x:label class="control-label">Đơn vị</x:label>
-		    						<combobox model="@load(entry.donVis.listAllDonVi)"
-										readonly="true" width="100%"
-										value="@load(vm.arg.donvi eq null ? 'Tất cả' : vm.arg.donvi.ten)"
-										selectedItem="@bind(vm.arg.donvi)"
-										placeholder="Chọn đơn vị" >
-										<template name="model">
-											<comboitem label="@load(each eq null ? 'Tất cả' : each.ten)" />
-										</template>
-									</combobox>
-		    					</n:div>
-		    				</n:div>
 		    				<n:div class="col-md-2">
 		    					<n:div class="form-group" >
 		    						<x:label class="control-label">Trạng thái</x:label>
@@ -101,7 +87,6 @@
 											<column label="STT" hflex="min" sclass="text-align-center"/>
 											<column label="Họ và tên" width="22%" />
 											<column label="Tên đăng nhập" width="23%" />	
-											<column label="Đơn vị" width="22%" />
 											<column label="Vai trò" width="23%" />				
 											<column label="Trạng thái" width="100px" sclass="text-align-center"/>
 											<column label="Thao tác" width="105px" sclass="text-align-center"/>
@@ -111,7 +96,6 @@
 												<label value="@bind(forEachStatus.index + 1 + vm.arg.page * vm.arg.pagesize)" style="text-align:center;display:block"/>
 												<label value="@load(each.hoVaTen)"/>
 												<label value="@load(each.tenDangNhap)"/>
-												<label value="@load(each.donVi ne null ? each.donVi.ten : '')" />
 												<label value="@load(each.vaiTroText)" />
 												<cell sclass="text-align-center">
 													<n:span class="${each.setStyleTrangThai(each.trangThai)}">${each.checkApDung ? 'Áp dụng' : 'Đã khóa'}</n:span>
