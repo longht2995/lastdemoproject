@@ -1,2 +1,0 @@
-<?component name="chung" inline="true" macroURI="chung.zul"?>
-<chung model="${arg.vm}" save="Chỉnh sửa vai trò" notify="${arg.vmArgs}"/>
