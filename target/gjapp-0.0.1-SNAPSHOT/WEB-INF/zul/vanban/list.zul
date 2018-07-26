@@ -31,7 +31,7 @@
 										onOK="@command('cmd', notify=vm, attr='*')" />
 								</n:div>
 							</n:div>
-							<n:div class="col-md-4">
+							<n:div class="col-md-3">
 		    					<n:div class="form-group" >
 		    						<x:label class="control-label">Loại văn bản</x:label>
 		    						<combobox readonly="true" style="display:block" width="99%" placeholder="Tất cả"
@@ -44,7 +44,7 @@
 	    							</combobox>
 		    					</n:div>
 		    				</n:div>
-		    				<n:div class="col-md-4">
+		    				<n:div class="col-md-2">
 		    					<n:div class="form-group" >
 		    						<x:label class="control-label">Trạng thái xuất bản</x:label>
 		    						<combobox readonly="true" style="display:block" width="99%" placeholder="Tất cả"
@@ -56,7 +56,7 @@
 		    					</n:div>
 		    				</n:div>
 		    				
-		    				<n:div class="col-md-4">
+		    				<n:div class="col-md-3">
 		    					<n:div class="form-group" >
 		    						<x:label class="control-label">Cơ quan ban hành</x:label>
 		    						<combobox readonly="true" style="display:block" width="99%" placeholder="Tất cả"
@@ -67,7 +67,7 @@
 	    							</combobox>
 		    					</n:div>
 		    				</n:div>
-		    				<n:div class="col-md-4">
+		    				<n:div class="col-md-3">
 		    					<n:div class="form-group" >
 		    						<x:label class="control-label">Cấp ban hành</x:label>
 		    						<combobox readonly="true" style="display:block" width="99%" placeholder="Tất cả"
@@ -78,7 +78,7 @@
 	    							</combobox>
 		    					</n:div>
 		    				</n:div>
-							<n:div class="col-md-4">
+							<n:div class="col-md-3">
 		    					<n:div class="form-group" >
 		    						<x:label class="control-label">Lĩnh vực</x:label>
 		    						<combobox readonly="true" style="display:block" width="99%" placeholder="Tất cả"
@@ -104,7 +104,7 @@
 										sclass="mis-datebox-inner" value="@bind(vm.arg.denngay)"/>
 		    					</n:div>
 		    				</n:div>
-							<n:div class="col-md-3">
+							<n:div class="col-md-2">
 	    						<x:label class="control-label">&#160;</x:label>
 	    						<n:div class="form-group">
 									<x:button class="btn btn-warning" type="button"
@@ -144,7 +144,6 @@
 											<column label="Cơ quan ban hành" hflex="min" sclass="text-align-center"/>
 											<column label="Cấp ban hành" hflex="min" sclass="text-align-center"/>
 											<column label="Xuất bản" hflex="min" sclass="text-align-center"/>				
-											<column label="Trạng thái" hflex="min" sclass="text-align-center"/>
 											<column label="Thao tác" width="100px"/>
 										</columns>
 										<template name="model">
@@ -156,12 +155,7 @@
 												<label value="@load(each.linhVucVanBan.tenLinhVuc)"/>
 												<label value="@load(each.coQuanBanHanh.tenCoQuan)"/>
 												<label value="@load(each.capBanHanh.tenBanHanh)"/>
-												<div class="text-align-center">
-													<n:span class="${each.setStyleStatus(each.trangThaiSoan)}">${each.trangThaiSoan eq 'da_duyet' ? 'Có' : 'Không'}</n:span>
-												</div>
-												<div class="text-align-center">
-													<n:span class="${each.setStyleTrangThai(each.trangThai)}">${each.trangThaiText eq null ? '   ' : each.trangThaiText}</n:span>
-												</div>
+												<n:span class="${each.setStylePublishStatus(each.xuatBan)}">${each.xuatBan ? 'Có' : 'Không'}</n:span>
 												<div class="text-align-center">
 													<x:button class="btn btn-info btn-xs"  zk:if="${entry.quyen.vanban_sua}"
 														onClick="@command('redirectPage', zul='vanban/edit.zul',vmArgs=vm,vm=item)">

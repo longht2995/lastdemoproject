@@ -4,7 +4,7 @@
 	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
 	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
 	whatever="@load(true,after='cmd') @converter('vn.toancauxanh.service.DetachConverter')"
-	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="500px">
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="800px">
 	<zscript><![CDATA[
 		notifyObject = arg.get("notify");
 		vmArgs = arg.get("vmArgs");				
@@ -30,19 +30,16 @@
 				<hlayout class="control-label">
 					<x:label>
 						Mô tả
-						<n:small class="required">*</n:small>
 					</x:label>
 				</hlayout>
 				<vlayout>
 					<textbox class="form-control" width="100%"
-						maxlength="255"
-						value="@load(vm.moTa) @save(vm.moTa, before={'saveBanHanh'}) @validator('vn.toancauxanh.vm.BaseValid', constraint='no empty')" />
-					<label zclass="error"
-						value="@load(vmsgs[self.previousSibling])" />
+						maxlength="255" rows="5"
+						value="@load(vm.moTa) @save(vm.moTa, before={'saveBanHanh'})" />
 				</vlayout>
-				<div class="form-group">
-						<checkbox label="Áp dụng" checked="@bind(vm.checkApDung)" />
-					</div>
+			</div>
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.checkApDung)" />
 			</div>
 		</div>
 	</div>

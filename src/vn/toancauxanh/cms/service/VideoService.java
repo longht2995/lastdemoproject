@@ -27,4 +27,5 @@ public class VideoService extends BasicService<Video>{
 		q.orderBy(QVideo.video.ngaySua.desc());
 		return q;
 	}
+	
 }

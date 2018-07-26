@@ -8,7 +8,6 @@
 	<zscript>
 		entry = new vn.toancauxanh.service.BaseObject().core();
 		notifyObject = arg.get("vmArgs");
-		donVis = entry.donVis;
 	</zscript>
 	<div class="row box-body">
 		<div class="${(vm.noId() and entry.quyen.nguoidung_them) or (!vm.noId() and entry.quyen.nguoidung_sua) ? 'col-md-6' : 'col-md-12'}">

@@ -53,4 +53,5 @@ public class VanBanService extends BasicService<VanBan>{
 		q.orderBy(QVanBan.vanBan.ngaySua.desc());
 		return q;
 	}
+	
 }

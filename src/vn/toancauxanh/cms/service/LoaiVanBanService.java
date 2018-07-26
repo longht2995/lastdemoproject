@@ -35,6 +35,7 @@ public class LoaiVanBanService extends BasicService<LoaiVanBan>{
 				.where(QLoaiVanBan.loaiVanBan.trangThai.ne(core().TT_KHONG_AP_DUNG))
 				.orderBy(QLoaiVanBan.loaiVanBan.ngaySua.desc())
 				.fetch();
+		System.out.println("Chắc ai đó sẽ về");
 		return list;
 	}
 	public List<LoaiVanBan> getListLoaiVanBanAndNull(){

@@ -1,11 +1,11 @@
-<?page title="Quản lý thông báo" contentType="text/html;charset=UTF-8"?>
+<?page title="Quản lý cấp ban hành" contentType="text/html;charset=UTF-8"?>
 <div xmlns:zk="zk" xmlns:n="native" xmlns:x="xhtml" apply="org.zkoss.bind.BindComposer"
 	viewModel="@id('vm') @init('vn.toancauxanh.cms.service.CapBanHanhService')">
 	<zscript><![CDATA[
-		self.page.title= "Quản lý chủ đề video";
+		self.page.title= "Quản lý cấp ban hành";
 	]]></zscript>
 	<n:section class="content-header">
-		<n:h1 class="header-title">Danh sách chủ đề video</n:h1>
+		<n:h1 class="header-title">Danh sách cấp ban hành</n:h1>
 	</n:section>
 	<n:section class="content">
 	    <n:div class="row">
@@ -71,7 +71,7 @@
 										emptyMessage="Danh sách không có chủ đề video nào" class="hidden-xs">
 										<columns>
 											<column label="STT" hflex="min" sclass="text-align-center"/>
-											<column label="Tên chủ đề" width="90%" />					
+											<column label="Tên cấp ban hành" width="90%" />					
 											<column label="Trạng thái" width="100px" sclass="text-align-center"/>
 											<column label="Thao tác" width="80px" sclass="text-align-center"/>
 										</columns>

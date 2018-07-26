@@ -8,6 +8,11 @@ import org.springframework.util.SystemPropertyUtils;
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Sessions;
 
+import com.querydsl.jpa.impl.JPAQuery;
+
+import vn.toancauxanh.gg.model.QVideo;
+import vn.toancauxanh.gg.model.VanBan;
+import vn.toancauxanh.gg.model.Video;
 import vn.toancauxanh.service.BasicService;
 
 public class HomeService extends BasicService<Object> {
@@ -69,7 +74,14 @@ public class HomeService extends BasicService<Object> {
 		return trang;
 	}	
 	
-	
-	
+	public JPAQuery<VanBan> getListVanBan(){
+		JPAQuery<VanBan> q = find(VanBan.class)
+				.limit(10);
+		return q;
+	}
+	public JPAQuery<Video> getListVideo(){
+		JPAQuery<Video> q = find(Video.class).limit(3).orderBy(QVideo.video.ngaySua.desc());
+		return q;
+	}
 	
 }

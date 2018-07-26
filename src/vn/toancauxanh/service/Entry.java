@@ -35,6 +35,7 @@ import vn.toancauxanh.cms.service.CapBanHanhService;
 import vn.toancauxanh.cms.service.ChuDeVideoService;
 import vn.toancauxanh.cms.service.CoQuanBanHanhService;
 import vn.toancauxanh.cms.service.DonViHanhChinhService;
+import vn.toancauxanh.cms.service.HomeService;
 import vn.toancauxanh.cms.service.ImageService;
 import vn.toancauxanh.cms.service.LanguageService;
 import vn.toancauxanh.cms.service.LinhVucVanBanService;
@@ -318,11 +319,14 @@ public class Entry extends BaseObject<Object> {
 	public String home() {
 		return "forward:/frontend/index.zhtml?&file=/frontend/home/home.zhtml";
 	}
-	
-	@RequestMapping(value = "/{path:.+$}/{cat:\\d+}/id/{id:\\d+}")
+	@RequestMapping(value = "/{path}")
+	public String page(@PathVariable String path) {
+		return "forward:/frontend/index.zhtml?&file=/frontend/"+path+"/home.zhtml";
+	}
+	/*@RequestMapping(value = "/{path:.+$}/{cat:\\d+}/id/{id:\\d+}")
 	public String newDetail(@PathVariable String path, @PathVariable Long cat, @PathVariable Long id) {
 		return "forward:/frontend/index.zhtml?resource="+path+"&file=/frontend/kyhop/newdetail.zhtml&cat="+cat+"&id="+ id;
-	}
+	}*/
 	
 	@RequestMapping(value = "/{path:.+$}/{cat:\\d+}")
 	public String newDetail(@PathVariable String path, @PathVariable Long cat) {
@@ -374,6 +378,9 @@ public class Entry extends BaseObject<Object> {
 	public final VaiTroService getVaiTros() {
 		return new VaiTroService();
 	}
+	public final HomeService getHomes() {
+		return new HomeService();
+	}
 	public final DonViHanhChinhService getDonViHanhChinhs() {
 		return new DonViHanhChinhService();
 	}
@@ -389,7 +396,6 @@ public class Entry extends BaseObject<Object> {
 	public final BannerService getBanners(){
 		return new BannerService();
 	}
-
 	public final List<String> getNoiDungActive() {
 		return Arrays.asList("chude", "baiviet", "video", "gallery", "linhvuchoidap", "hoidaptructuyen", "faqcategory",
 				"faq");

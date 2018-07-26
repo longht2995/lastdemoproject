@@ -43,6 +43,8 @@ public class QVanBan extends EntityPathBase<VanBan> {
 
     public final QLoaiVanBan loaiVanBan;
 
+    public final StringPath moTa = createString("moTa");
+
     public final DateTimePath<java.util.Date> ngayBanHanh = createDateTime("ngayBanHanh", java.util.Date.class);
 
     public final DateTimePath<java.util.Date> ngayHieuLuc = createDateTime("ngayHieuLuc", java.util.Date.class);
@@ -70,6 +72,8 @@ public class QVanBan extends EntityPathBase<VanBan> {
     public final StringPath trangThaiSoan;
 
     public final StringPath trichYeu = createString("trichYeu");
+
+    public final BooleanPath xuatBan = createBoolean("xuatBan");
 
     public QVanBan(String variable) {
         this(VanBan.class, forVariable(variable), INITS);
